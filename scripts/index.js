@@ -33,7 +33,7 @@ initialCards.forEach(function(card) {
 const cardsContainer = document.querySelector('.cards__list');
 const cardTemplate = document.querySelector('#card-template').content;
 
-function getCardElement(name = 'Unnamed place', link = './images/placeholder.jpg') {
+function getCardElement(name, link) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   const cardTitle = cardElement.querySelector('.card__title');
   const cardImage = cardElement.querySelector('.card__image');
@@ -95,7 +95,6 @@ function handleProfileFormSubmit(evt) {
 }
 
 editButton.addEventListener('click', handleOpenEditModal);
-closeButton.addEventListener('click', () => closeModal(editPopup));
 editForm.addEventListener('submit', handleProfileFormSubmit);
 
 const addCardForm = document.querySelector('#new-card-form');
@@ -103,12 +102,15 @@ const addCardModal = document.querySelector('#new-card-popup');
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  const titleInput = addCardForm.querySelector('.popup__input_type_title');
-  const linkInput = addCardForm.querySelector('.popup__input_type_link');
+  const titleInput = addCardForm.querySelector('.popup__input_type_card-name');
+  const linkInput = addCardForm.querySelector('.popup__input_type_url');
   renderCard(titleInput.value, linkInput.value, cardsContainer);
   closeModal(addCardModal);
   addCardForm.reset();
 }
+
+addCardForm.addEventListener('submit', handleCardFormSubmit);
+
 const addButton = document.querySelector('.profile__add-button');
 const closeAddCardButton = addCardModal.querySelector('.popup__close');
 
@@ -137,3 +139,20 @@ function openImagePopup(name, link) {
 }
 
 closeImageModalButton.addEventListener('click', () => closeModal(imageModal));
+
+// Cerrar modal con ESC
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    const opendModal = document.querySelector('.popup_is-opened');
+    if (openModal) {
+      closeModal(opendModal);
+    }
+  }
+});
+
+// Cerrar modal al hacer clic en el overlay
+document.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup')) {
+    closeModal(evt.target);
+  }
+});
