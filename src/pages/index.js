@@ -100,7 +100,7 @@ addButton.addEventListener('click', () => {
 });
 
 // --------------------
-// Configuración del validador (CORREGIDA)
+// Configuración del validador 
 // --------------------
 const config = {
   formSelector: '.popup__form',
