@@ -39,8 +39,8 @@ const initialCards = [
 // UserInfo
 // --------------------
 const userInfo = new UserInfo({
-  nameSelector: '.profiletitle',
-  jobSelector: '.profiledescription'
+  nameSelector: '.profile__title',
+  jobSelector: '.profile__description'
 });
 
 // --------------------
@@ -127,12 +127,20 @@ addFormValidator.enableValidation();
 // Handlers
 // --------------------
 function handleProfileFormSubmit(data) {
-  userInfo.setUserInfo(data);
+  userInfo.setUserInfo({
+    name: data.name,
+    job: data.description
+  });
   editProfilePopup.close();
 }
 
 function handleCardFormSubmit(data) {
-  const card = new Card(data, '#card-template', openImagePopup);
+  const cardData = {
+    name: data['place-name'],
+    link: data.link
+  };
+
+  const card = new Card(cardData, '#card-template', openImagePopup);
   cardSection.addItem(card.generateCard());
   addCardPopup.close();
 }
