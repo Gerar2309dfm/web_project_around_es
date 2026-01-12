@@ -47,11 +47,13 @@
     ></button>
     <div class="card__description">
       <h2 class="card__title"></h2>
+       <div class="card__like-container"></div>
       <button
         aria-label="Me gusta"
         class="card__like-button"
         type="button"
       ></button>
+       <span class="card__like-count">0</span>
     </div> 
   </li>
 </template>
@@ -141,6 +143,32 @@
         </div>
       </div>
     </div>
+    <div class="popup" id="avatar-popup">
+  <div class="popup__container">
+    <button class="popup__close"></button>
+    <form class="popup__form" id="avatar" name="avatar-form">
+      <h3 class="popup__title">Cambiar foto de perfil</h3>
+      <input
+        type="url"
+        name="avatar"
+        class="popup__input"
+        placeholder="Enlace a la imagen"
+        required
+      />
+      <span class="popup__error"></span>
+      <button class="popup__button" type="submit">Guardar</button>
+    </form>
+  </div>
+</div>
+
+<div class="popup" id="confirm-popup">
+  <div class="popup__container">
+    <button class="popup__close"></button>
+    <form class="popup__form">
+      <h3 class="popup__title">¿Estás seguro?</h3>
+      <button class="popup__button" type="submit">Sí</button>
+    </form>
+  </div>
     <script  type="module" src="./pages/index.js"></script>
   </body>
 </html>
