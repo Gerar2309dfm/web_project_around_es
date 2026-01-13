@@ -80,17 +80,23 @@
 
 .profile__image-container {
   position: relative;
+  width: 120px;
+  height: 120px;
 }
 
 .profile__image-edit {
-  width: 430px;
-  height: 181px;
-  
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 1) url('../images/edit-icon.svg') center no-repeat;
-  opacity: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.8)
+    url('../images/edit-icon.svg')
+    center
+    no-repeat;
+  background-size: 26px 26px;
+  border: none;
   cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .profile__image-container:hover .profile__image-edit {
